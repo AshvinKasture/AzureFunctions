@@ -75,6 +75,15 @@ Or via Azure DevOps / GitHub Actions CI/CD pipelines.
 | Function Name | Description | Schedule |
 |---------------|-------------|----------|
 | Health-Check | Logs function app health status with timestamp, memory usage, and runtime info | Every 10 minutes |
+| Gold-FetchDailyPrice | Fetches 24k gold price from Gold API and stores in Supabase | Daily at 6:00 AM IST |
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `GOLD_API_TOKEN` | API token for goldapi.io |
+| `SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_SERVICE_KEY` | Supabase service role key |
 
 ## Adding a New Function
 

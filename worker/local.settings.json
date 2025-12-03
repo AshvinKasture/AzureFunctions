@@ -2,6 +2,9 @@
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "node"
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "GOLD_API_TOKEN": "goldapi-24jwklismipi90ns-io",
+    "SUPABASE_URL": "https://nhlswdkdhgofjlqpgrtx.supabase.co",
+    "SUPABASE_SERVICE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5obHN3ZGtkaGdvZmpscXBncnR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ3MjMyNTMsImV4cCI6MjA4MDI5OTI1M30.qV3kryLSRtTiwhkDTFjWnpBKeKfLyJ826njVAJ_gSPE"
   }
 }
