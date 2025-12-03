@@ -19,10 +19,13 @@ This repository contains a shared Azure Function App (`func-worker-common-prod-c
 ```
 AzureFunctions/
 ├── README.MD
-├── host.json
-├── local.settings.json
-└── [ServiceName]-[FunctionName]/    # Individual functions
-    └── function.json
+└── worker/
+    ├── host.json
+    ├── local.settings.json
+    ├── package.json
+    └── src/
+        └── functions/
+            └── [ServiceName]-[FunctionName].js
 ```
 
 ## Naming Convention
@@ -52,8 +55,10 @@ Examples:
 ### Local Development
 
 1. Clone this repository
-2. Copy `local.settings.json.example` to `local.settings.json` and configure your settings
-3. Run `func start` to start the function app locally
+2. Navigate to the worker folder: `cd worker`
+3. Install dependencies: `npm install`
+4. Copy `local.settings.json.example` to `local.settings.json` and configure your settings
+5. Run `func start` to start the function app locally
 
 ### Deployment
 
@@ -69,12 +74,12 @@ Or via Azure DevOps / GitHub Actions CI/CD pipelines.
 
 | Function Name | Description | Schedule |
 |---------------|-------------|----------|
-| *Add your functions here* | | |
+| Health-Check | Logs function app health status with timestamp, memory usage, and runtime info | Every 10 minutes |
 
 ## Adding a New Function
 
-1. Create a new folder following the naming convention: `[ServiceName]-[FunctionName]`
-2. Add the function code and `function.json`
+1. Create a new file in `worker/src/functions/` following the naming convention: `[ServiceName]-[FunctionName].js`
+2. Use the Azure Functions v4 programming model
 3. Update this README with function details
 4. Test locally before deploying
 
