@@ -1,66 +1,82 @@
-# Azure Worker Function Apps
+# Azure Worker Function App
 
-A collection of Azure Function Apps designed to run scheduled background jobs and perform automated tasks.
+A common Azure Function App designed to run scheduled background jobs and perform automated tasks.
 
 ## Overview
 
-This repository contains multiple Azure Function Apps (referred to as "Worker Function Apps") that execute on a schedule to perform various background operations. Each function app may be related or entirely independent of the others, serving different purposes within the organization's workflow automation.
+This repository contains a shared Azure Function App (`func-worker-common-prod-cin`) that hosts multiple functions for various background operations. Each function within this app may be related or entirely independent of the others, serving different purposes within the organization's workflow automation.
+
+## Function App Details
+
+| Property | Value |
+|----------|-------|
+| **Function App Name** | `func-worker-common-prod-cin` |
+| **Environment** | Production |
+| **Region** | Central India (cin) |
 
 ## Project Structure
 
 ```
 AzureFunctions/
 ├── README.MD
-└── [FunctionAppName]/        # Individual function app folders
-    ├── host.json
-    ├── local.settings.json
-    └── [FunctionName]/       # Individual functions
+├── host.json
+├── local.settings.json
+└── [ServiceName]-[FunctionName]/    # Individual functions
+    └── function.json
 ```
+
+## Naming Convention
+
+Functions follow the naming pattern: **`[ServiceName]-[FunctionName]`**
+
+Examples:
+- `Billing-GenerateInvoices`
+- `Notifications-SendReminders`
+- `Reports-DailyExport`
 
 ## Features
 
-- **Scheduled Execution**: All function apps are timer-triggered, running on configurable CRON schedules
+- **Scheduled Execution**: Functions are timer-triggered, running on configurable CRON schedules
 - **Background Processing**: Designed for long-running or periodic background tasks
-- **Independent Deployment**: Each function app can be deployed and scaled independently
-- **Modular Design**: Function apps are self-contained and can operate independently
+- **Shared Resources**: All functions share the same function app resources and configuration
+- **Modular Design**: Each function is self-contained and operates independently
 
 ## Getting Started
 
 ### Prerequisites
 
+- [Node.js](https://nodejs.org/) (LTS version recommended)
 - [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-- .NET SDK / Node.js / Python (depending on the function app runtime)
 
 ### Local Development
 
 1. Clone this repository
-2. Navigate to the specific function app directory
-3. Copy `local.settings.json.example` to `local.settings.json` and configure your settings
-4. Run `func start` to start the function app locally
+2. Copy `local.settings.json.example` to `local.settings.json` and configure your settings
+3. Run `func start` to start the function app locally
 
 ### Deployment
 
-Each function app can be deployed independently to Azure using:
+Deploy to Azure using:
 
 ```bash
-func azure functionapp publish <FunctionAppName>
+func azure functionapp publish func-worker-common-prod-cin
 ```
 
 Or via Azure DevOps / GitHub Actions CI/CD pipelines.
 
-## Function Apps
+## Functions
 
-| Function App | Description | Schedule |
-|--------------|-------------|----------|
-| *Add your function apps here* | | |
+| Function Name | Description | Schedule |
+|---------------|-------------|----------|
+| *Add your functions here* | | |
 
-## Contributing
+## Adding a New Function
 
-1. Create a new folder for your function app
-2. Follow the existing naming conventions
-3. Update this README with your function app details
-4. Submit a pull request
+1. Create a new folder following the naming convention: `[ServiceName]-[FunctionName]`
+2. Add the function code and `function.json`
+3. Update this README with function details
+4. Test locally before deploying
 
 ## License
 
